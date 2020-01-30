@@ -1,25 +1,42 @@
-import React, { useState } from 'react';
-import Cliente from './Cliente';
+import React from 'react';
+import './global.css';
+import './App.css';
+import './Sidebar.css';
 
 function App() {
-  const [nome, setNome] = useState('Paulo');
-  const [tamanhoFonte, setFonte] = useState(15);
-  const cliente = new Cliente();
 
 
-  function mudarNome() {
-    let t = tamanhoFonte + tamanhoFonte;
-    //let x = nome + ' ' + nome;
-    //setNome(x);
-    setFonte(t);
-  }
-  
   return (
-    <>
-      <h1 style={{fontSize:tamanhoFonte}}>{nome}</h1>
-      <button onClick={mudarNome}>Mudar nome</button>
-      <button onClick={cliente.Alertar}>Alertar</button>
-    </>
+    <div id="app">
+      <aside>
+        <strong>Cadastrar</strong>
+        <form>
+          <div className="input-block">
+            <label htmlFor="github_username">Usuário do GitHub</label>
+            <input name="github_username" id="github_username" required />
+          </div>
+          <div className="input-block">
+            <label htmlFor="techs">Tecnologias</label>
+            <input name="techs" id="techs" required />
+          </div>
+          <div className="input-group">
+            <div className="input-block">
+              <label htmlFor="latitude">Latitude</label>
+              <input name="latitude" id="latitude" required />
+            </div>
+            <div className="input-block">
+              <label htmlFor="longitude">Longitude</label>
+              <input name="longitude" id="longitude" required />
+            </div>
+          </div>
+          <button type="submit">Salvar</button>
+        </form>
+      </aside>
+
+      <main>
+
+      </main>
+    </div>
   );
 }
 
