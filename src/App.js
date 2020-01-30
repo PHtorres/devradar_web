@@ -4,7 +4,8 @@ function App() {
   const [nome, setNome] = useState('Paulo');
 
   function mudarNome() {
-    setNome('Pedro');
+    let x = nome + ' ' + nome;
+    setNome(x);
   }
   return (
     <>
