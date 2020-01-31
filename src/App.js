@@ -2,6 +2,7 @@ import React from 'react';
 import './global.css';
 import './App.css';
 import './Sidebar.css';
+import './Main.css';
 
 function App() {
 
@@ -34,7 +35,67 @@ function App() {
       </aside>
 
       <main>
+        <ul>
+          <li className="dev-item">
+            <header>
+              <img src="https://avatars1.githubusercontent.com/u/58959268?s=460&v=4" alt="Paulo Henrique Torres" />
+              <div className="user-info">
+                <strong>Paulo Henrique Torres</strong>
+                <span>.Net Core, React Native, ReactJS</span>
+              </div>
+            </header>
+            <p>Analista de Sistemas, Desenvolvedor .Net Core MVC / .Net WebForms / JavaScript / SQLServer / React Native</p>
+            <a href="https://github.com/phtorres" target="_blank" rel="noopener noreferrer">Acessar Perfil no GitHub</a>
+          </li>
 
+          <li className="dev-item">
+            <header>
+              <img src="https://avatars1.githubusercontent.com/u/58959268?s=460&v=4" alt="Paulo Henrique Torres" />
+              <div className="user-info">
+                <strong>Paulo Henrique Torres</strong>
+                <span>.Net Core, React Native, ReactJS</span>
+              </div>
+            </header>
+            <p>Analista de Sistemas, Desenvolvedor .Net Core MVC / .Net WebForms / JavaScript / SQLServer / React Native</p>
+            <a href="https://github.com/phtorres" target="_blank" rel="noopener noreferrer">Acessar Perfil no GitHub</a>
+          </li>
+
+          <li className="dev-item">
+            <header>
+              <img src="https://avatars1.githubusercontent.com/u/58959268?s=460&v=4" alt="Paulo Henrique Torres" />
+              <div className="user-info">
+                <strong>Paulo Henrique Torres</strong>
+                <span>.Net Core, React Native, ReactJS</span>
+              </div>
+            </header>
+            <p>Analista de Sistemas, Desenvolvedor .Net Core MVC / .Net WebForms / JavaScript / SQLServer / React Native</p>
+            <a href="https://github.com/phtorres" target="_blank" rel="noopener noreferrer">Acessar Perfil no GitHub</a>
+          </li>
+
+          <li className="dev-item">
+            <header>
+              <img src="https://avatars1.githubusercontent.com/u/58959268?s=460&v=4" alt="Paulo Henrique Torres" />
+              <div className="user-info">
+                <strong>Paulo Henrique Torres</strong>
+                <span>.Net Core, React Native, ReactJS</span>
+              </div>
+            </header>
+            <p>Analista de Sistemas, Desenvolvedor .Net Core MVC / .Net WebForms / JavaScript / SQLServer / React Native</p>
+            <a href="https://github.com/phtorres" target="_blank" rel="noopener noreferrer">Acessar Perfil no GitHub</a>
+          </li>
+
+          <li className="dev-item">
+            <header>
+              <img src="https://avatars1.githubusercontent.com/u/58959268?s=460&v=4" alt="Paulo Henrique Torres" />
+              <div className="user-info">
+                <strong>Paulo Henrique Torres</strong>
+                <span>.Net Core, React Native, ReactJS</span>
+              </div>
+            </header>
+            <p>Analista de Sistemas, Desenvolvedor .Net Core MVC / .Net WebForms / JavaScript / SQLServer / React Native</p>
+            <a href="https://github.com/phtorres" target="_blank" rel="noopener noreferrer">Acessar Perfil no GitHub</a>
+          </li>
+        </ul>
       </main>
     </div>
   );
