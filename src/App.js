@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import API from './services/api';
 import './global.css';
 import './App.css';
 import './Sidebar.css';
 import './Main.css';
 
 function App() {
+
+  const [devs, setDevs] = useState([]);
 
   const [github_username, setGitHubUsername] = useState('');
   const [techs, setTechs] = useState('');
@@ -27,8 +30,26 @@ function App() {
     )
   }, []); //esse vetor vazio é para só chamar a função uma vez e não toda vez que o componente for renderizado
 
-  async function handleAddDev(e){
+  useEffect(() => {
+    async function loadDevs() {
+      const response = await API.get('/devs');
+      setDevs(response.data);
+    }
+    loadDevs();
+  }, []);
+
+  async function handleAddDev(e) {
     e.preventDefault();
+    const response = await API.post('/devs', {
+      github_username,
+      techs,
+      latitude,
+      longitude
+    });
+    console.log(response.data);
+    setGitHubUsername('');
+    setTechs('');
+    setDevs([... devs, response.data]);
   }
 
   return (
@@ -83,65 +104,19 @@ function App() {
 
       <main>
         <ul>
-          <li className="dev-item">
-            <header>
-              <img src="https://avatars1.githubusercontent.com/u/58959268?s=460&v=4" alt="Paulo Henrique Torres" />
-              <div className="user-info">
-                <strong>Paulo Henrique Torres</strong>
-                <span>.Net Core, React Native, ReactJS</span>
-              </div>
-            </header>
-            <p>Analista de Sistemas, Desenvolvedor .Net Core MVC / .Net WebForms / JavaScript / SQLServer / React Native</p>
-            <a href="https://github.com/phtorres" target="_blank" rel="noopener noreferrer">Acessar Perfil no GitHub</a>
-          </li>
-
-          <li className="dev-item">
-            <header>
-              <img src="https://avatars1.githubusercontent.com/u/58959268?s=460&v=4" alt="Paulo Henrique Torres" />
-              <div className="user-info">
-                <strong>Paulo Henrique Torres</strong>
-                <span>.Net Core, React Native, ReactJS</span>
-              </div>
-            </header>
-            <p>Analista de Sistemas, Desenvolvedor .Net Core MVC / .Net WebForms / JavaScript / SQLServer / React Native</p>
-            <a href="https://github.com/phtorres" target="_blank" rel="noopener noreferrer">Acessar Perfil no GitHub</a>
-          </li>
-
-          <li className="dev-item">
-            <header>
-              <img src="https://avatars1.githubusercontent.com/u/58959268?s=460&v=4" alt="Paulo Henrique Torres" />
-              <div className="user-info">
-                <strong>Paulo Henrique Torres</strong>
-                <span>.Net Core, React Native, ReactJS</span>
-              </div>
-            </header>
-            <p>Analista de Sistemas, Desenvolvedor .Net Core MVC / .Net WebForms / JavaScript / SQLServer / React Native</p>
-            <a href="https://github.com/phtorres" target="_blank" rel="noopener noreferrer">Acessar Perfil no GitHub</a>
-          </li>
-
-          <li className="dev-item">
-            <header>
-              <img src="https://avatars1.githubusercontent.com/u/58959268?s=460&v=4" alt="Paulo Henrique Torres" />
-              <div className="user-info">
-                <strong>Paulo Henrique Torres</strong>
-                <span>.Net Core, React Native, ReactJS</span>
-              </div>
-            </header>
-            <p>Analista de Sistemas, Desenvolvedor .Net Core MVC / .Net WebForms / JavaScript / SQLServer / React Native</p>
-            <a href="https://github.com/phtorres" target="_blank" rel="noopener noreferrer">Acessar Perfil no GitHub</a>
-          </li>
-
-          <li className="dev-item">
-            <header>
-              <img src="https://avatars1.githubusercontent.com/u/58959268?s=460&v=4" alt="Paulo Henrique Torres" />
-              <div className="user-info">
-                <strong>Paulo Henrique Torres</strong>
-                <span>.Net Core, React Native, ReactJS</span>
-              </div>
-            </header>
-            <p>Analista de Sistemas, Desenvolvedor .Net Core MVC / .Net WebForms / JavaScript / SQLServer / React Native</p>
-            <a href="https://github.com/phtorres" target="_blank" rel="noopener noreferrer">Acessar Perfil no GitHub</a>
-          </li>
+          {devs.map(dev => (
+            <li key={dev._id} className="dev-item">
+              <header>
+                <img src={dev.avatar_url} alt={dev.name} />
+                <div className="user-info">
+                  <strong>{dev.name}</strong>
+                  <span>{dev.techs.join(', ')}</span>
+                </div>
+              </header>
+              <p>{dev.bio}</p>
+              <a href={`https://github.com/${dev.github_username}`} target="_blank" rel="noopener noreferrer">Acessar Perfil no GitHub</a>
+            </li>
+          ))}
         </ul>
       </main>
     </div>
