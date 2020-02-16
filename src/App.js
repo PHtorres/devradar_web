@@ -14,6 +14,7 @@ function App() {
   useEffect(() => {
     async function loadDevs() {
       const response = await API.get('/devs');
+      console.log(response);
       setDevs(response.data);
     }
     loadDevs();
